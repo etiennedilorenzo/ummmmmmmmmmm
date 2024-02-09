@@ -1,94 +1,51 @@
+html
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Catalogue</title>
-    <link rel="stylesheet" type="text/css" href="styleseee.css">
+    <link rel="stylesheet" href="Stylee.css">
+  <title>Lesson Notes</title>
 </head>
-
 <body>
-    <header>
-        <div class="toolbar">
-            <h1>PC Catalogue</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <style>
 
-    <div class="pc-grid">
-        <div class="card">
-            <img src="HPhighEnd.jpg" alt="OfficePC">
-            <h2>HP Z1 G9 Tower Workstation Core™ i7 & NVIDIA® T400</h2>
-            <p class="price">£1,223.99</p>
-            <ul>
-                <li>HP Z1 G9 Tower Workstation</li>
-                <li>Windows 11 Pro</li>
-                <li>16 GB RAM</li>
-                <li>Intel® Core™ i7 13700 (13th Generation)</li>
-                <li>512 GB SSD</li>
-                <li>15.6 Inch</li>
-                <li>NVIDIA® T400 (4 GB)</li>
-            </ul>
-            <p>High performance. An entry workstation for heavy workflows.</p>
-            <a href="https://shorturl.at/coNQ4" target="_blank"><button>Add to Cart</button></a>
-        </div>
+    </style>
+  <h1>Lesson Notes</h1>
 
-        <div class="card">
-            <img src="old.jpg" alt="OfficePC">
-            <h2>Dell Vostro 3710 Small Form Factor</h2>
-            <p class="price">£498.80</p>
-            <ul>
-                <li>Intel® UHD Graphics 730</li>
-                <li>Windows 11 Pro</li>
-                <li>8 GB: 1 x 8 GB, DDR4, 3200 MT/s</li>
-                <li>12th Gen Intel® Core™ i5-12400 (18 MB cache, 6 cores, 12 threads, 2.50 GHz to 4.40 GHz Turbo)</li>
-                <li>512 GB, M.2, PCIe NVMe, SSD</li>
-            </ul>
-            <a href="https://shorturl.at/bcfu2" target="_blank"><button>Add to Cart</button></a>
-        </div>
+  <form>
+    <label for="lesson">Lesson:</label>
+    <input type="text" id="lesson" name="lesson"><br>
 
-        <div class="card">
-            <img src="acer.png" alt="HomePC">
-            <h2>Acer Aspire TC-1760-UA92</h2>
-            <p class="price">£300</p>
-            <ul>
-                <li>Acer Aspire TC-1760-UA92</li>
-                <li>11 Home</li>
-                <li>8 GB</li>
-                <li>Intel Core i3-12100</li>
-                <li>2TB HDD</li>
-                <li>Wireless Keyboard and Mouse</li>
-            </ul>
-            <p>Ideal ALL-ROUNDER: Power through your daily tasks with the TC-1760's Intel Core i3 CPU, 8GB of RAM, and 2TB HDD. CLASSICALLY STYLED: The subtle styling and small size of this desktop ensure that it's the ideal fit for any home or office.</p>
-            <a href="https://shorturl.at/msU02" target="_blank"><button>Add to Cart</button></a>
-        </div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"><br>
 
-        <div class="card">
-            <img src="pcGame.png" alt="GamingPC">
-            <h2>AURORA NOVA</h2>
-            <p class="price">£500</p>
-            <ul>
-                <li>Ryzen 5 5500</li>
-                <li>11 Home</li>
-                <li>ASUS® PRIME A520M-K</li>
-                <li>16GB PCS PRO DDR4 3200MHz</li>
-                <li>2GB GEFORCE GT 1030 - DVI, HDMI</li>
-                <li>256GB PCS PCIe M.2 SSD</li>
-                <li>1TB SEAGATE BARRACUDA HDD 256MB CACHE</li>
-            </ul>
-            <p>This is something for you if you are looking for a gaming PC that's cheap and efficient. The AURORA NOVA comes in AMD and can be made to your liking.</p>
-            <a href="https://www.pcspecialist.co.uk/view/Aurora-Nova/" target="_blank"><button>Add to Cart</button></a>
-        </div>
-    </div>
+    <label for="notes">Notes:</label><br>
+    <textarea id="notes" name="notes" rows="10" cols="50"></textarea><br>
 
+    <input type="submit" value="Save">
+  </form>
+
+  <h2>Saved Notes:</h2>
+  <div id="saved-notes"></div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const lesson = document.getElementById('lesson').value;
+      const date = document.getElementById('date').value;
+      const notes = document.getElementById('notes').value;
+
+      const note = document.createElement('div');
+      note.innerHTML = `<h3>${lesson} - ${date}</h3>
+                        <p>${notes}</p>`;
+
+      document.getElementById('saved-notes').appendChild(note);
+
+      // Clear form inputs
+      document.getElementById('lesson').value = '';
+      document.getElementById('date').value = '';
+      document.getElementById('notes').value = '';
+    });
+  </script>
 </body>
-
 </html>
